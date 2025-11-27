@@ -4,7 +4,7 @@ from fastapi.responses import FileResponse
 from PIL import Image
 import io
 
-from model import predict_image
+from .model import predict_image
 
 app = FastAPI()
 
