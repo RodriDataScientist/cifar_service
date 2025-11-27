@@ -4,7 +4,7 @@ from fastapi.responses import FileResponse
 from PIL import Image
 import io
 
-from app.model import predict_image
+from model import predict_image
 
 app = FastAPI()
 
@@ -27,4 +27,5 @@ async def predict(file: UploadFile = File(...)):
     return {
         "filename": file.filename,
         "prediction": result
+
     }
