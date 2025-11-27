@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Clasificador de Imágenes</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<h1 class="title">Clasificador de Imágenes</h1>
+
+<div id="drop-area">
+    <div id="placeholder">
+        <div class="icon">📁</div>
+        <p>Arrastra una imagen aquí<br><span>o haz clic para seleccionar</span></p>
+    </div>
+
+    <img id="preview">
+    <input type="file" id="fileElem" accept="image/*" style="display:none;">
+</div>
+
+<button id="predictBtn" disabled>🔮 Predecir</button>
+
+<div id="result"></div>
+<script src="/static/script.js"></script>
+</body>
+</html>
