@@ -30,7 +30,7 @@ model.fc = nn.Linear(model.fc.in_features, 10)  # CIFAR-10 = 10 clases
 
 # Cargar pesos entrenados
 weights_path = os.path.join(os.path.dirname(__file__), "best_model.pth")
-checkpoint = torch.load(weights_path, map_location=device)
+checkpoint = torch.load(weights_path, map_location=device, weights_only=False)
 model.load_state_dict(checkpoint["model_state_dict"])
 model.eval()
 model.to(device)
@@ -65,4 +65,5 @@ def predict_image(image: Image.Image):
         "label_idx": int(label_idx),           # ← índice por si lo quieres
         "confidence": float(probs[label_idx]),
         "all_probs": probs.tolist()
+
     }
