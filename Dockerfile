@@ -1,14 +1,14 @@
 FROM python:3.11-slim
-
 WORKDIR /app
 
 COPY requirements.txt .
-RUN pip install --no-cache-dir \
-  fastapi uvicorn pillow python-multipart \
-  torch --index-url https://download.pytorch.org/whl/cpu \
-  torchvision --index-url https://download.pytorch.org/whl/cpu
 
-# Copia de la app y del modelo real (ya descargado por lfs pull)
+# 1. Instalar dependencias de PyPI normalmente
+RUN pip install --no-cache-dir fastapi uvicorn pillow python-multipart
+
+# 2. Instalar PyTorch CPU desde el index correcto
+RUN pip install --no-cache-dir torch torchvision --index-url https://download.pytorch.org/whl/cpu
+
 COPY app ./
 
 EXPOSE 8000
