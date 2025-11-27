@@ -46,8 +46,7 @@ if not os.path.exists(weights_path):
 # ======================
 model = models.resnet18(weights=None)  # NO usar pretrained=True
 model.fc = nn.Linear(model.fc.in_features, 10)  # CIFAR-10 = 10 clases
-
-checkpoint = torch.load(weights_path, map_location=device)
+checkpoint = torch.load(weights_path, map_location=device, weights_only=False)
 model.load_state_dict(checkpoint["model_state_dict"])
 model.eval()
 model.to(device)
@@ -79,3 +78,4 @@ def predict_image(image: Image.Image):
         "confidence": float(probs[label_idx]),
         "all_probs": probs.tolist()
     }
+
