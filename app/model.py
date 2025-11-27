@@ -4,7 +4,7 @@ import torchvision.transforms as T
 from torchvision import models
 from PIL import Image
 import os
-import requests
+import gdown
 
 # ======================
 # CONFIGURACIÓN
@@ -27,18 +27,14 @@ CIFAR10_CLASSES = {
 # ======================
 # ARCHIVO DE PESOS
 # ======================
-
 weights_path = os.path.join(os.path.dirname(__file__), "cifar10_model.pth")
-# Reemplaza TU_ID_DEL_ARCHIVO con el ID de Google Drive
 drive_file_id = "19IKfrv3P2DscAFAv8FaSYr53cz87ElFn"
-drive_url = f"https://drive.google.com/uc?export=download&id={drive_file_id}"
+drive_url = f"https://drive.google.com/uc?id={drive_file_id}"
 
 # Descargar modelo desde Drive si no existe
 if not os.path.exists(weights_path):
     print("Modelo no encontrado, descargando desde Google Drive...")
-    response = requests.get(drive_url)
-    with open(weights_path, "wb") as f:
-        f.write(response.content)
+    gdown.download(drive_url, weights_path, quiet=False)
     print("Modelo descargado correctamente!")
 
 # ======================
@@ -46,7 +42,8 @@ if not os.path.exists(weights_path):
 # ======================
 model = models.resnet18(weights=None)  # NO usar pretrained=True
 model.fc = nn.Linear(model.fc.in_features, 10)  # CIFAR-10 = 10 clases
-checkpoint = torch.load(weights_path, map_location=device, weights_only=False)
+
+checkpoint = torch.load(weights_path, map_location=device)
 model.load_state_dict(checkpoint["model_state_dict"])
 model.eval()
 model.to(device)
@@ -78,4 +75,3 @@ def predict_image(image: Image.Image):
         "confidence": float(probs[label_idx]),
         "all_probs": probs.tolist()
     }
-
