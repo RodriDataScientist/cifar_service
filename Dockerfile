@@ -8,11 +8,11 @@ WORKDIR /app
 # Copia el requirements
 COPY requirements.txt .
 
-# Instala dependencias
+# Instala dependencias + gdown
 RUN pip install --no-cache-dir -r requirements.txt \
     && pip install --no-cache-dir torch --index-url https://download.pytorch.org/whl/cpu \
     && pip install --no-cache-dir torchvision --index-url https://download.pytorch.org/whl/cpu \
-    && pip install --no-cache-dir requests  
+    && pip install --no-cache-dir gdown
 
 # Copia todo el código
 COPY app ./app
