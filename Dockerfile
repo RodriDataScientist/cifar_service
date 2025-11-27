@@ -18,7 +18,7 @@ RUN pip install --no-cache-dir -r requirements.txt \
 
 # Copia todo el código incluyendo el modelo
 COPY app ./app
-COPY main.py ./main.py
+COPY app/main.py ./app/main.py
 
 # Verifica que el modelo está presente y su tamaño
 RUN if [ ! -f "app/best_model.pth" ]; then echo "ERROR: best_model.pth no encontrado"; exit 1; fi \
@@ -28,4 +28,4 @@ RUN if [ ! -f "app/best_model.pth" ]; then echo "ERROR: best_model.pth no encont
 EXPOSE 8000
 
 # Comando para arrancar el servidor
-CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
+CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000"]
