@@ -1,27 +1,40 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <title>Clasificador de Imágenes</title>
-    <link rel="stylesheet" href="/static/style.css">
+    <meta charset="UTF-8" />
+    <title>Clasificador CIFAR-10</title>
+    <link rel="stylesheet" href="/static/style.css" />
 </head>
 <body>
+    <h1 class="title">Clasificador de Imágenes CIFAR-10</h1>
+    <p class="subtitle">Estas son las 10 categorías que este modelo reconoce:</p>
 
-<h1 class="title">Clasificador de Imágenes</h1>
-
-<div id="drop-area">
-    <div id="placeholder">
-        <div class="icon">📁</div>
-        <p>Arrastra una imagen aquí<br><span>o haz clic para seleccionar</span></p>
+    <div class="categories">
+        <div class="cat">✈️ Avión</div>
+        <div class="cat">🚗 Auto</div>
+        <div class="cat">🐦 Pájaro</div>
+        <div class="cat">🐱 Gato</div>
+        <div class="cat">🦌 Ciervo</div>
+        <div class="cat">🐶 Perro</div>
+        <div class="cat">🐸 Rana</div>
+        <div class="cat">🐴 Caballo</div>
+        <div class="cat">🚢 Barco</div>
+        <div class="cat">🚚 Camión</div>
     </div>
 
-    <img id="preview">
-    <input type="file" id="fileElem" accept="image/*" style="display:none;">
-</div>
+    <div id="drop-area">
+        <div id="placeholder">
+            <div class="icon">📁</div>
+            <p>Arrastra una imagen aquí<br><span>o haz clic para seleccionar</span></p>
+        </div>
+        <img id="preview" />
+        <input type="file" id="fileElem" accept="image/*" style="display:none;" />
+    </div>
 
-<button id="predictBtn" disabled>🔮 Predecir</button>
+    <button id="predictBtn" disabled>🔮 Predecir</button>
 
-<div id="result"></div>
-<script src="/static/script.js"></script>
+    <div id="result"></div>
+
+    <script src="/static/script.js"></script>
 </body>
 </html>

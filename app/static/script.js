@@ -10,6 +10,7 @@ let currentFile = null;
 dropArea.addEventListener("click", () => fileInput.click());
 
 // Drag & Drop
+
 dropArea.addEventListener("dragover", (e) => {
     e.preventDefault();
     dropArea.style.borderColor = "white";
@@ -24,15 +25,12 @@ dropArea.addEventListener("drop", (e) => {
     handleFile(e.dataTransfer.files[0]);
 });
 
-fileInput.addEventListener("change", () => {
-    handleFile(fileInput.files[0]);
-});
+fileInput.addEventListener("change", () => handleFile(fileInput.files[0]));
 
 function handleFile(file) {
     currentFile = file;
     preview.src = URL.createObjectURL(file);
     preview.style.display = "block";
-
     placeholder.style.display = "none";
     predictBtn.disabled = false;
     result.innerHTML = "";
