@@ -1,4 +1,3 @@
-```markdown
 # 🚀 Clasificador CIFAR-10 con ResNet18 | FastAPI + Docker + Railway
 
 Este proyecto implementa un clasificador de imágenes basado en **ResNet18** con *fine-tuning* utilizando el dataset **CIFAR-10**.  
