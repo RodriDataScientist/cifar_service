@@ -147,8 +147,6 @@ El entrenamiento se realizó con:
 * Scheduler ReduceLROnPlateau
 * Mejores pesos guardados por validación
 
-El script completo se encuentra en la carpeta `train/`.
-
 ---
 
 ## 👨‍💻 Autor
